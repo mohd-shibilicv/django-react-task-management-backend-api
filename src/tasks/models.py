@@ -1,6 +1,6 @@
+from django.utils import timezone
 from django.db import models
 from django.core.exceptions import ValidationError
-from django.utils import timezone
 
 
 class Task(models.Model):
@@ -18,7 +18,7 @@ class Task(models.Model):
     description = models.TextField(blank=True)
     status = models.CharField(max_length=20, choices=STATUS_CHOICES, default="pending")
     priority = models.CharField(max_length=20, choices=PRIORITY_STATUS, default="medium")
-    due_date = models.DateField()
+    due_date = models.DateTimeField()
 
     def clean(self):
         if not self.title:
